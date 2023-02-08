@@ -40,5 +40,5 @@ if [ "$pass" = "" ]
 then
   sh -c "ssh "$INPUT_ARGS" -i "$KEYFILE" -o StrictHostKeyChecking=no -p "$INPUT_PORT" "${INPUT_USER}"@"${INPUT_HOST}" < "$HOME"/shell.sh"
 else
-  sh -c "sshpass -p"$pass" ssh "$INPUT_ARGS" -o StrictHostKeyChecking=no -p "$INPUT_PORT" "${INPUT_USER}"@"${INPUT_HOST}" < "$HOME"/shell.sh"
+  sh -c "sshpass -p '$pass' ssh "$INPUT_ARGS" -o StrictHostKeyChecking=no -p "$INPUT_PORT" "${INPUT_USER}"@"${INPUT_HOST}" < "$HOME"/shell.sh"
 fi
