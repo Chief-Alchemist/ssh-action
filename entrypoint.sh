@@ -32,7 +32,7 @@ echo "$INPUT_COMMAND" > $HOME/shell.sh
 echo "exit \$?" >> $HOME/shell.sh
 cat $HOME/shell.sh
 
-echo Start Run Command
+echo Start Run Cmd
 
 pass="$INPUT_PASS"
 
@@ -40,5 +40,5 @@ if [ "$pass" = "" ]
 then
   sh -c "ssh "$INPUT_ARGS" -i "$KEYFILE" -o StrictHostKeyChecking=no -p "$INPUT_PORT" "${INPUT_USER}"@"${INPUT_HOST}" < "$HOME"/shell.sh"
 else
-  sh -c "sshpass -p "$pass" ssh "$INPUT_ARGS" -o StrictHostKeyChecking=no -p "$INPUT_PORT" "${INPUT_USER}"@"${INPUT_HOST}" < "$HOME"/shell.sh"
+  sh -c "sshpass -p"$pass" ssh "$INPUT_ARGS" -o StrictHostKeyChecking=no -p "$INPUT_PORT" "${INPUT_USER}"@"${INPUT_HOST}" < "$HOME"/shell.sh"
 fi
