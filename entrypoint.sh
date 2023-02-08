@@ -34,9 +34,9 @@ cat $HOME/shell.sh
 
 echo Start Run Cmd
 
-if [ '$INPUT_PASS' = "" ]
+if [ "$(printf '%q' "$INPUT_PASS")" = "" ]
 then
   sh -c "ssh "$INPUT_ARGS" -i "$KEYFILE" -o StrictHostKeyChecking=no -p "$INPUT_PORT" "${INPUT_USER}"@"${INPUT_HOST}" < "$HOME"/shell.sh"
 else
-  sh -c "sshpass -p '$INPUT_PASS' ssh "$INPUT_ARGS" -o StrictHostKeyChecking=no -p "$INPUT_PORT" "${INPUT_USER}"@"${INPUT_HOST}" < "$HOME"/shell.sh"
+  sh -c "sshpass -p "$(printf '%q' "$INPUT_PASS")" ssh "$INPUT_ARGS" -o StrictHostKeyChecking=no -p "$INPUT_PORT" "${INPUT_USER}"@"${INPUT_HOST}" < "$HOME"/shell.sh"
 fi
